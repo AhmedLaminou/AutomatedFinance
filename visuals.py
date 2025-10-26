@@ -15,10 +15,27 @@ def plot_category_pie(df):
     st.plotly_chart(fig, use_container_width=True)
 
 def plot_monthly_trend(df):
-    df["Month"] = df["Date"].dt.to_period("M")
-    monthly_totals = df.groupby("Month")["Amount"].sum().reset_index()
-    fig = px.bar(monthly_totals, x="Month", y="Amount", title="Monthly Expenses")
+    import plotly.express as px
+    import pandas as pd
+    import streamlit as st
+
+    # Group by month + category
+    monthly = df.groupby([pd.Grouper(key="Date", freq="M"), "Category"])["Amount"].sum().reset_index()
+
+    # Fix: convert Period to Timestamp
+    if isinstance(monthly["Date"].iloc[0], pd.Period):
+        monthly["Date"] = monthly["Date"].dt.to_timestamp()
+
+    # Plot
+    fig = px.line(
+        monthly,
+        x="Date",
+        y="Amount",
+        color="Category",
+        title="Monthly Expense Trend"
+    )
     st.plotly_chart(fig, use_container_width=True)
+
 
 def combined_chart(df):
     import plotly.graph_objects as go
