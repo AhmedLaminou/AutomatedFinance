@@ -1,6 +1,6 @@
 # 💰 Pro Finance Dashboard
 
-![Finance Dashboard Banner](https://via.placeholder.com/1200x400.png?text=Pro+Finance+Dashboard)
+![Finance Dashboard Banner](goPro.png)
 
 > A sleek, intelligent, and interactive **financial dashboard** built with **Streamlit**, designed to help you manage, visualize, and forecast your personal or business finances. Track expenses, categorize transactions automatically, set budgets, and gain insights—all in one place!
 
