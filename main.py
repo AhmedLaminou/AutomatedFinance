@@ -31,7 +31,7 @@ if st.sidebar.button("Add Category") and new_cat:
         categories[new_cat] = []
         save_categories()
         save_session()
-        st.experimental_rerun()
+        st.rerun()
 
 # Sidebar: Set budgets
 st.sidebar.header("💰 Set Budgets")
